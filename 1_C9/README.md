@@ -19,9 +19,6 @@ AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코�
 * Cost-saving setting은 4시간 후 설정
 * Create! 하면 조금 시간이 걸립니다...
     * 이때, 자동으로 EC2가 생성됩니다.
-```bash
-$ git clone https://github.com/Exubient/AUSG_KakaoBot
-```
 
 ## AWS Elastic IP (고정아이피 할당)
 * [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
