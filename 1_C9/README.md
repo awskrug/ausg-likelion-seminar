@@ -40,10 +40,10 @@ $ npm init
 ```
 
 - 몇가지 선택 사항을 물어보는데, 모두 기본값을 사용합니다. (엔터 계속 입력)
-- Express.js를 사용 할 것이므로, npm을 이용해 미리 설치해줍니다.
+- 필요한 라이브러리를 npm을 이용해 미리 설치해줍니다.
 
 ```bash
-$ npm install express --save
+$ npm install express body-parser cors --save
 ```
 
 - 프로젝트 생성과 express 설치가 완료되었다면 마찬가지로 왼쪽의 브라우저 탭에서 오른쪽 클릭해 `New File`을 선택하고
@@ -53,8 +53,12 @@ $ npm install express --save
 
 ```javascript
 const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
 
+app.use(cors())
+app.use(bodyParser.json())
 app.get('/', function (req, res) {
     res.json({
         message: "Hello, Like-Lion! We're AUSG!",
@@ -86,6 +90,7 @@ $ node index.js
 ![스크린샷](images/screenshot-22.png)
 - `편집`을 클릭해 인바운드 규칙을 아래의 그림과 같이 추가한 뒤 `저장` 버튼을 누릅니다.
 > 인바운드 규칙 추가를 통해 원하는 포트 번호를 추가 할 수 있습니다. 오늘 우리는 임의적으로 3000번 포트를 열었습니다. 일반적인 HTTP 기본 포트는 `80`, HTTPS 기본 포트는 `443`을 사용합니다.
+> 우리가 곧 추가 할 MySQL도 이 보안 설정을 그대로 사용 할 것이므로 3306 포트 (MySQL)도 열어줍니다.
 
 ![스크린샷](images/screenshot-23.png)
 
