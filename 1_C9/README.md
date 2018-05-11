@@ -1,0 +1,37 @@
+# C9 생성하기
+![c9](https://i.imgur.com/rzZMKYN.png)
+
+AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코드 작성 및 실행, 디버깅을 할 수 있는 클라우드 기반의 통합 개발 환경(IDE)를 의미합니다.
+**Ctrl + 왼쪽마우스 클릭!**
+**https://aws.amazon.com/ko/cloud9/**
+<br>
+
+* 싱가폴 리전 선택
+![스크린샷, 2018-01-10 20-35-15](https://i.imgur.com/C4v5zVW.png)
+
+* AWS Cloud9 시작하기 버튼 --> 클릭
+![스크린샷, 2018-01-10 20-38-12](https://i.imgur.com/jDNs9SR.png)
+* 지역은 싱가폴로 선택을 하도록 하겠습니다.
+![스크린샷, 2018-01-10 20-42-17](https://i.imgur.com/G1HBFzt.png)
+* Create Environment 버튼 --> 클릭
+* Create a new instance for environment (EC2 설정) --> Instance Type은 t2.micro설정
+![스크린샷, 2018-01-10 20-49-26](https://i.imgur.com/5ivNdsk.png)
+* Cost-saving setting은 4시간 후 설정
+* Create! 하면 조금 시간이 걸립니다...
+    * 이때, 자동으로 EC2가 생성됩니다.
+```bash
+$ git clone https://github.com/Exubient/AUSG_KakaoBot
+```
+
+## AWS Elastic IP (고정아이피 할당)
+* [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
+* 내계정 -> AWS Management Console-> EC2
+* NETWORK & SECURITY탭 -> Elastic Ips -> Allocate new address -> Allocates -> 작업-> 주소연결
+
+## AWS Inbound 열기
+* [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
+* 콘솔에 접근  -> EC2 -> NETWORK & SECURITY탭
+* Security Groups
+* Inbound -> Edit  -> Add Rules Button -> custom -> 8000, 8080 열기 -> save
+![inbound](https://i.imgur.com/MLrtqy2.png)
+![스크린샷, 2018-01-10 21-30-51](https://i.imgur.com/1T7SqP1.png)
