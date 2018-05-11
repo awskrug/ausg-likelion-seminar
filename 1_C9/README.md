@@ -1,43 +1,33 @@
 # AWS Cloud9
-![c9](https://i.imgur.com/rzZMKYN.png)
+<!-- ![c9](https://i.imgur.com/rzZMKYN.png) -->
 
-AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코드 작성 및 실행, 디버깅을 할 수 있는 클라우드 기반의 통합 개발 환경(IDE)를 의미합니다.
-**Ctrl + 왼쪽마우스 클릭!**
-**https://aws.amazon.com/ko/cloud9/**
-<br>
+AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코드 작성 및 실행, 디버깅을 할 수 있는 클라우드 기반의 통합 개발 환경(Integrated Development Environment)입니다. [서비스 소개](https://aws.amazon.com/ko/cloud9/)  
 
-## AWS Cloud9 생성하기 
-* 싱가폴 리전 선택
-![스크린샷, 2018-01-10 20-35-15](https://i.imgur.com/C4v5zVW.png)
+# AWS Cloud9 생성하기 
+- 싱가폴 리전을 선택합니다.
+![스크린샷](images/screenshot-1.png)
+- AWS Cloud9 서비스로 이동합니다
+![스크린샷](images/screenshot-2.png)
+- Create Environment 버튼을 클릭합니다.
+![스크린샷](images/screenshot-3.png)
+- Cloud9 환경의 이름과 세부정보를 적습니다.
+![스크린샷](images/screenshot-4.png)
+- 아래의 설정과 동일하게 맞춰주세요.
+![스크린샷](images/screenshot-5.png)
+- Next Step 버튼을 클릭합니다.  
+- 설정한 값들을 확인 한 후 Create Environment 버튼을 클릭합니다.
+> 이때, 자동으로 EC2가 생성됩니다.  
+![스크린샷](images/screenshot-6.png)
 
-* AWS Cloud9 시작하기 버튼 --> 클릭
-![스크린샷, 2018-01-10 20-38-12](https://i.imgur.com/jDNs9SR.png)
-* 지역은 싱가폴로 선택을 하도록 하겠습니다.
-![스크린샷, 2018-01-10 20-42-17](https://i.imgur.com/G1HBFzt.png)
-* Create Environment 버튼 --> 클릭
-* Create a new instance for environment (EC2 설정) --> Instance Type은 t2.micro설정
-![스크린샷, 2018-01-10 20-49-26](https://i.imgur.com/5ivNdsk.png)
-* Cost-saving setting은 4시간 후 설정
-* Create! 하면 조금 시간이 걸립니다...
-    * 이때, 자동으로 EC2가 생성됩니다.
-
-## EC2 Elastic IP (고정아이피 할당)
-* [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
-* 내계정 -> AWS Management Console-> EC2
-* 좌측 Instance탭 -> 생성한 C9의 EC2 인스턴스 선택(aws-cloud9-[C9_이름] 으로 시작합니다.) -> 하단의 Private IP 확인
-![Instance](images/Instance.png)
-* NETWORK & SECURITY탭 -> 탄력적 IP -> 새 주소 할당 -> 할당하기 -> 할당된 IP클릭 -> 작업-> 주소연결클릭
-![Instance](images/elasticIP_1.png)
-* 인스턴스 -> 생성한 C9의 EC2 인스턴스 선택
-* 프라이빗 IP -> 생성한 C9의 EC2 인스턴스의 Private IP 선택
-![Instance](images/elasticIP_2.png)
-
-## EC2 Inbound 열기
-* [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
-* 콘솔에 접근  -> EC2 -> NETWORK & SECURITY탭
-* Security Groups
-* Inbound -> Edit  -> 아래 사진과 같이 추가
-![inbound](https://i.imgur.com/MLrtqy2.png)
-![스크린샷, 2018-01-10 21-30-51](images/Inbound.png)
+# 인스턴스 보안 설정
+- `EC2` 서비스로 이동합니다.
+![스크린샷](images/screenshot-20.png)
+- `네트워크 및 보안` → `보안 그룹` 으로 이동합니다.  
+![스크린샷](images/screenshot-21.png)
+- 지은 이름에 해당하는 보안 그룹을 선택 한 후 하단의 `인바운드` 탭을 선택합니다.
+![스크린샷](images/screenshot-22.png)
+- `편집`을 클릭해 인바운드 규칙을 아래의 그림과 같이 추가한 뒤 `저장` 버튼을 누릅니다.
+> 인바운드 규칙 추가를 통해 원하는 포트 번호를 추가 할 수 있습니다. 오늘 우리는 임의적으로 3000번 포트를 열었습니다. 일반적인 HTTP 기본 포트는 `80`, HTTPS 기본 포트는 `443`을 사용합니다.
+![스크린샷](images/screenshot-23.png)
 
 실습이 완료되면 다음모듈인 [2. S3 생성하기](../2_S3) 으로 이동하십시오
