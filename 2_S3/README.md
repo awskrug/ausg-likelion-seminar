@@ -16,6 +16,7 @@
 ![스크린샷 5](./images/screenshot-2018-02-18-PM-10.19.22.png)
 - `권한` 클릭
 - `버킷 정책` 클릭
+- 아래의 값을 복사, 붙여넣기 해주신 후 버킷 생성시 입력한 이름을 `버킷이름입력`에 넣어주세요
 
 ```json
 {
@@ -35,8 +36,24 @@
 }
 ```
 
-- 위의 값을 복사, 붙여넣기 해주신 후 버킷 생성시 입력한 이름을 `버킷이름입력`에 넣어주세요
 - `저장`을 클릭합니다.
-![스크린샷 6](./images/6.png)
+![스크린샷 6](./images/6.png)  
+- `CORS 구성` 클릭
+- 아래의 값을 복사, 붙여넣기 해주세요.
+
+```json  
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+<CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>POST</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+</CORSRule>
+</CORSConfiguration>
+```
+
+![스크린샷 6](./images/7.png)
 
 축하드립니다! 실습이 완료셨다면, 다음 모듈인 [3. AWS RDS](../3_RDS) 으로 이동하세요.
