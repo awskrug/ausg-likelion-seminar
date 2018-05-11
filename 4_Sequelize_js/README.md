@@ -235,6 +235,7 @@ app.post('/images', function (req, res) {
 const AWS = require('aws-sdk')
 const s3 = new AWS.S3({
     region: 'ap-southeast-1',
+    signatureVersion: 'v4',
 })
 
 app.post('/generatePresignedUrl', function (req, res) {
