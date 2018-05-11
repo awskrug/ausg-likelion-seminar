@@ -38,4 +38,4 @@ AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코�
 * Security Groups
 * Inbound -> Edit  -> 아래 사진과 같이 추가
 ![inbound](https://i.imgur.com/MLrtqy2.png)
-![스크린샷, 2018-01-10 21-30-51](Inbound.png)
+![스크린샷, 2018-01-10 21-30-51](images/Inbound.png)
