@@ -30,11 +30,12 @@ AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코�
 * 인스턴스 -> 생성한 C9의 EC2 인스턴스 선택
 * 프라이빗 IP -> 생성한 C9의 EC2 인스턴스의 Private IP 선택
 ![Instance](images/elasticIP_2.png)
+* 
 
 ## AWS Inbound 열기
 * [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
 * 콘솔에 접근  -> EC2 -> NETWORK & SECURITY탭
 * Security Groups
-* Inbound -> Edit  -> Add Rules Button -> custom -> 8000, 8080 열기 -> save
+* Inbound -> Edit  -> 아래 사진과 같이 추가
 ![inbound](https://i.imgur.com/MLrtqy2.png)
-![스크린샷, 2018-01-10 21-30-51](https://i.imgur.com/1T7SqP1.png)
+![스크린샷, 2018-01-10 21-30-51](Inbound.png)
