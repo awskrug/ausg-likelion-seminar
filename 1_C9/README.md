@@ -23,7 +23,12 @@ AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코�
 ## AWS Elastic IP (고정아이피 할당)
 * [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
 * 내계정 -> AWS Management Console-> EC2
-* NETWORK & SECURITY탭 -> Elastic Ips -> Allocate new address -> Allocates -> 작업-> 주소연결
+* 좌측 Instance탭 -> 생성한 C9의 EC2 인스턴스 선택(aws-cloud9-[C9_이름] 으로 시작합니다.) -> 하단의 Private IP 확인
+![Instance](images/Instance.png)
+* NETWORK & SECURITY탭 -> Elastic Ips -> Allocate new address -> Allocates -> 작업-> 주소연결클릭
+* 인스턴스 -> 생성한 C9의 EC2 인스턴스 선택
+* 프라이빗 IP -> 생성한 C9의 EC2 인스턴스의 Private IP 선택
+![Instance](images/elasticIP.png)
 
 ## AWS Inbound 열기
 * [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
