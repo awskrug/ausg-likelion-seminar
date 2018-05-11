@@ -26,7 +26,7 @@ AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코�
 * 내계정 -> AWS Management Console-> EC2
 * 좌측 Instance탭 -> 생성한 C9의 EC2 인스턴스 선택(aws-cloud9-[C9_이름] 으로 시작합니다.) -> 하단의 Private IP 확인
 ![Instance](images/Instance.png)
-* NETWORK & SECURITY탭 -> Elastic Ips -> Allocate new address -> Allocates -> 작업-> 주소연결클릭
+* NETWORK & SECURITY탭 -> 탄력적 IP -> 새 주소 할당 -> 할당하기 -> 할당된 IP클릭 -> 작업-> 주소연결클릭
 ![Instance](images/elasticIP_1.png)
 * 인스턴스 -> 생성한 C9의 EC2 인스턴스 선택
 * 프라이빗 IP -> 생성한 C9의 EC2 인스턴스의 Private IP 선택
