@@ -19,7 +19,7 @@ AWS가입은 본 세미나에서는 안내하지 않습니다. 사전에 AWS계�
 
 둘 중 원하시는 브라우저를 설치해주세요. (Internet Explorer는 AWS Web Console에서 문제가 발생 할 수 있습니다.)
 
-#  순서대로 진행해 주세요.
+##  순서대로 진행해 주세요.
 1. [AWS Cloud9](1_C9/)
 2. [AWS S3](2_S3/)
 3. [AWS RDS](3_RDS/)
