@@ -39,6 +39,7 @@ app.get('/', function (req, res) {
 app.listen(3000)
 ```
 
+## 모델 정의
 Sequelize를 이용해 Model을 새롭게 정의해줍니다.  
   
 ```javascript
@@ -46,6 +47,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
+
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('DB이름', '마스터사용자이름', '마스터암호', {
     host: '확인한엔드포인트주소',
@@ -65,7 +67,7 @@ const ImagePost = sequelize.define('image_post', {
     url: Sequelize.STRING,
 })
 ImagePost.sync({ alter: true })
-///////// 여기까지 추가되었습니다.
+///////// 여기까지 추가
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -78,6 +80,7 @@ app.get('/', function (req, res) {
 app.listen(3000)
 ```
 
+## 엔드포인트 만들기
 몇가지 엔드포인트를 만들어보겠습니다.
 
 - GET /images
@@ -92,11 +95,11 @@ app.listen(3000)
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const Sequelize = require('sequelize')
 const app = express()
 
-const sequelize = new Sequelize('hellodb', 'admin', 'admin12345', {
-    host: 'like-lion-ausg.citwvqi18z6a.ap-southeast-1.rds.amazonaws.com',
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize('DB이름', '마스터사용자이름', '마스터암호', {
+    host: '확인한엔드포인트주소',
     dialect: 'mysql',
 });
 
@@ -123,6 +126,7 @@ app.get('/', function (req, res) {
     })
 })
 
+///////// 여기서부터
 app.get('/images', function (req, res) {
     ImagePost.findAll()
         .then(function (result) {
@@ -149,6 +153,7 @@ app.post('/images', function (req, res) {
         console.log(error)
     })
 })
+///////// 여기까지 추가
 
 app.listen(3000)
 ```
