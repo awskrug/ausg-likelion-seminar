@@ -19,6 +19,57 @@ AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코�
 > 이때, 자동으로 EC2가 생성됩니다.  
 ![스크린샷](images/screenshot-6.png)
 
+# 기본적인 Node.js 앱 만들기
+설정 테스트를 위해 기본적인 Node.js 앱을 만들어보도록 하겠습니다. Cloud9 환경에는 기본적으로 Node.js가 설치되어 있으므로 따로 Cloud9에 설치하실 필요는 없습니다.
+> 2018년 5월 12일 기준으로 6.14.1 버전이 설치되어 있습니다.
+
+- 왼쪽 위 파일 브라우저에서 오른쪽 클릭해 새로운 폴더를 만듭니다. (`New Folder` 클릭)
+- ![스크린샷](images/screenshot-11.png)
+- 폴더 이름을 `app`으로 입력합니다. (임의로 설정하셔도 좋습니다)  
+- 아래 터미널에서 `cd` 명령어를 이용해 `app` 폴더로 이동합니다.
+
+```bash
+$ cd app
+```
+
+- app 폴더로 맞게 이동하셨다면, (터미널 왼쪽에 `ec2-user:~/environment/app` 이라고 나오게 됩니다.) `npm init` 명령어를 이용해 새로운 프로젝트를 만들어줍니다.  
+
+```bash
+$ npm init
+```
+
+- 몇가지 선택 사항을 물어보는데, 모두 기본값을 사용합니다. (엔터 계속 입력)
+- 프로젝트 생성이 완료되었다면 마찬가지로 왼쪽의 브라우저 탭에서 오른쪽 클릭해 `New File`을 선택하고
+- 이름은 `index.js`로 설정합니다.
+- ![스크린샷](images/screenshot-12.png)
+- 왼쪽에서 생성된 `index.js`을 더블 클릭해 열어 준 뒤, 샘플 코드를 다음과 같이 작성합니다.
+
+```javascript
+const express = require('express')
+const app = express()
+
+app.get('/', function (req, res) {
+    res.json({
+        message: "Hello, Like-Lion! We're AUSG!",
+    })
+})
+
+app.listen(3000)
+```
+
+![스크린샷](images/screenshot-13.png)
+
+- 터미널에서 해당 앱을 실행합니다.  
+
+```bash
+$ node index.js
+```
+
+- 오른쪽 위의 Share 버튼을 클릭합니다.
+- ![스크린샷](images/screenshot-14.png)
+- Links to share의 Application IP 주소를 확인합니다.
+- ![스크린샷](images/screenshot-15.png)
+
 # 인스턴스 보안 설정
 - `EC2` 서비스로 이동합니다.
 ![스크린샷](images/screenshot-20.png)
