@@ -27,6 +27,11 @@ AUSG의 AWS 세미나에 오신것을 환영합니다. 오늘 저희는 AWS와 N
 
 둘 중 원하시는 브라우저를 설치해주세요. (Internet Explorer는 AWS Web Console에서 문제가 발생 할 수 있습니다.)
 
+## 3. POSTMAN
+- Postman은 개발한 API를 테스트하고, 테스트 결과를 공유하여 API 개발의 생산성을 높여주는 플랫폼입니다.
+- 본 실습에서 테스트를 위해 POSTMAN을 설치하여 활용하시는 것을 추천드립니다.
+[설치링크](https://www.getpostman.com/)
+
 ##  순서대로 진행해 주세요.
 1. [AWS Cloud9](1_C9/)
 2. [AWS S3](2_S3/)
