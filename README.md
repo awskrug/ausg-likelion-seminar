@@ -31,3 +31,6 @@ AUSG의 AWS 세미나에 오신것을 환영합니다. 오늘 저희는 AWS와 N
 1. [AWS Cloud9](1_C9/)
 2. [AWS S3](2_S3/)
 3. [AWS RDS](3_RDS/)
+4. [Sequelize](4_Sequelize_js)
+5. [SPA](5_SPA)
+6. [삭제 가이드](6_Delete)
