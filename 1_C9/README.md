@@ -1,43 +1,102 @@
 # AWS Cloud9
-![c9](https://i.imgur.com/rzZMKYN.png)
+<!-- ![c9](https://i.imgur.com/rzZMKYN.png) -->
 
-AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코드 작성 및 실행, 디버깅을 할 수 있는 클라우드 기반의 통합 개발 환경(IDE)를 의미합니다.
-**Ctrl + 왼쪽마우스 클릭!**
-**https://aws.amazon.com/ko/cloud9/**
-<br>
+AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코드 작성 및 실행, 디버깅을 할 수 있는 클라우드 기반의 통합 개발 환경(Integrated Development Environment)입니다. [서비스 소개](https://aws.amazon.com/ko/cloud9/)  
 
-## AWS Cloud9 생성하기 
-* 싱가폴 리전 선택
-![스크린샷, 2018-01-10 20-35-15](https://i.imgur.com/C4v5zVW.png)
+# AWS Cloud9 생성하기 
+- 싱가폴 리전을 선택합니다.
+![스크린샷](images/screenshot-1.png)
+- AWS Cloud9 서비스로 이동합니다
+![스크린샷](images/screenshot-2.png)
+- Create Environment 버튼을 클릭합니다.
+![스크린샷](images/screenshot-3.png)
+- Cloud9 환경의 이름과 세부정보를 적습니다.
+![스크린샷](images/screenshot-4.png)
+- 아래의 설정과 동일하게 맞춰주세요.
+![스크린샷](images/screenshot-5.png)
+- Next Step 버튼을 클릭합니다.  
+- 설정한 값들을 확인 한 후 Create Environment 버튼을 클릭합니다.
+> 이때, 자동으로 EC2가 생성됩니다.  
 
-* AWS Cloud9 시작하기 버튼 --> 클릭
-![스크린샷, 2018-01-10 20-38-12](https://i.imgur.com/jDNs9SR.png)
-* 지역은 싱가폴로 선택을 하도록 하겠습니다.
-![스크린샷, 2018-01-10 20-42-17](https://i.imgur.com/G1HBFzt.png)
-* Create Environment 버튼 --> 클릭
-* Create a new instance for environment (EC2 설정) --> Instance Type은 t2.micro설정
-![스크린샷, 2018-01-10 20-49-26](https://i.imgur.com/5ivNdsk.png)
-* Cost-saving setting은 4시간 후 설정
-* Create! 하면 조금 시간이 걸립니다...
-    * 이때, 자동으로 EC2가 생성됩니다.
+![스크린샷](images/screenshot-6.png)
 
-## EC2 Elastic IP (고정아이피 할당)
-* [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
-* 내계정 -> AWS Management Console-> EC2
-* 좌측 Instance탭 -> 생성한 C9의 EC2 인스턴스 선택(aws-cloud9-[C9_이름] 으로 시작합니다.) -> 하단의 Private IP 확인
-![Instance](images/Instance.png)
-* NETWORK & SECURITY탭 -> 탄력적 IP -> 새 주소 할당 -> 할당하기 -> 할당된 IP클릭 -> 작업-> 주소연결클릭
-![Instance](images/elasticIP_1.png)
-* 인스턴스 -> 생성한 C9의 EC2 인스턴스 선택
-* 프라이빗 IP -> 생성한 C9의 EC2 인스턴스의 Private IP 선택
-![Instance](images/elasticIP_2.png)
+# 기본적인 Node.js 앱 만들기
+설정 테스트를 위해 기본적인 Node.js 앱을 만들어보도록 하겠습니다. Cloud9 환경에는 기본적으로 Node.js가 설치되어 있으므로 따로 Cloud9에 설치하실 필요는 없습니다.
+> 2018년 5월 12일 기준으로 6.14.1 버전이 설치되어 있습니다.
 
-## EC2 Inbound 열기
-* [Ctrl + 마우스 왼쪽 버튼 클릭!](https://aws.amazon.com/ko/)
-* 콘솔에 접근  -> EC2 -> NETWORK & SECURITY탭
-* Security Groups
-* Inbound -> Edit  -> 아래 사진과 같이 추가
-![inbound](https://i.imgur.com/MLrtqy2.png)
-![스크린샷, 2018-01-10 21-30-51](images/Inbound.png)
+- 왼쪽 위 파일 브라우저에서 오른쪽 클릭해 새로운 폴더를 만듭니다. (`New Folder` 클릭)
+![스크린샷](images/screenshot-11.png)
+- 폴더 이름을 `app`으로 입력합니다. (임의로 설정하셔도 좋습니다)  
+- 아래 터미널에서 `cd` 명령어를 이용해 `app` 폴더로 이동합니다.
 
-실습이 완료되면 다음모듈인 [2. S3 생성하기](../2_S3) 으로 이동하십시오
+```bash
+$ cd app
+```
+
+- app 폴더로 맞게 이동하셨다면, (터미널 왼쪽에 `ec2-user:~/environment/app` 이라고 나오게 됩니다.) `npm init` 명령어를 이용해 새로운 프로젝트를 만들어줍니다.  
+
+```bash
+$ npm init
+```
+
+- 몇가지 선택 사항을 물어보는데, 모두 기본값을 사용합니다. (엔터 계속 입력)
+- 필요한 라이브러리를 npm을 이용해 미리 설치해줍니다.
+
+```bash
+$ npm install express body-parser cors --save
+```
+
+- 프로젝트 생성과 express 설치가 완료되었다면 마찬가지로 왼쪽의 브라우저 탭에서 오른쪽 클릭해 `New File`을 선택하고
+- 이름은 `index.js`로 설정합니다.
+![스크린샷](images/screenshot-12.png)
+- 왼쪽에서 생성된 `index.js`을 더블 클릭해 열어 준 뒤, 샘플 코드를 다음과 같이 작성합니다.
+
+```javascript
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const app = express()
+
+app.use(cors())
+app.use(bodyParser.json())
+app.get('/', function (req, res) {
+    res.json({
+        message: "Hello, Like-Lion! We're AUSG!",
+    })
+})
+
+app.listen(3000)
+```
+
+![스크린샷](images/screenshot-13.png)
+
+- 터미널에서 해당 앱을 실행합니다.  
+
+```bash
+$ node index.js
+```
+
+- 오른쪽 위의 Share 버튼을 클릭합니다.
+![스크린샷](images/screenshot-14.png)
+- Links to share의 Application IP 주소를 확인합니다.
+![스크린샷](images/screenshot-15.png)
+
+# 인스턴스 보안 설정
+- `EC2` 서비스로 이동합니다.
+![스크린샷](images/screenshot-20.png)
+- `네트워크 및 보안` → `보안 그룹` 으로 이동합니다.  
+![스크린샷](images/screenshot-21.png)
+- 지은 이름에 해당하는 보안 그룹을 선택 한 후 하단의 `인바운드` 탭을 선택합니다.
+![스크린샷](images/screenshot-22.png)
+- `편집`을 클릭해 인바운드 규칙을 아래의 그림과 같이 추가한 뒤 `저장` 버튼을 누릅니다.
+> 인바운드 규칙 추가를 통해 원하는 포트 번호를 추가 할 수 있습니다. 오늘 우리는 임의적으로 3000번 포트를 열었습니다. 일반적인 HTTP 기본 포트는 `80`, HTTPS 기본 포트는 `443`을 사용합니다.
+> 우리가 곧 추가 할 MySQL도 이 보안 설정을 그대로 사용 할 것이므로 3306 포트 (MySQL)도 열어줍니다.
+
+![스크린샷](images/screenshot-23.png)
+
+# 결과 확인
+- `Share`에서 확인한 IP 주소를 브라우저 주소창에 입력 한 뒤, 주소 뒤에 `:3000`을 붙여
+제대로 서버가 동작하는지 확인해보세요. 아래와 같은 화면이 나옵니다.  
+![스크린샷](images/screenshot-30.png)
+
+축하드립니다! 실습이 완료되셨다면, 다음 모듈인 [2. S3 버킷 생성하기](../2_S3) 으로 이동하세요.

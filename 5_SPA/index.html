@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <title>like-lion-ausg</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>AUSG Instagram</h1>
+      <div class="upload">
+        <input id="f" type="file" accept="image/png, image/gif, image/jpeg, image/bmp, image/x-icon"/>
+        <input id="t" type="text" v-model="title" placeholder="title"/>
+        <input id="d"type="text" v-model="description" placeholder="description"/>
+        <button @click="upload">업로드</button>
+      </div>
+      <div class="image-posts">
+        <div
+          class="image-posts__post"
+          v-for="imagePost in imagePosts"
+          :key="imagePost.id"
+        >
+          <img :src="imagePost.url" style="width: 100%"/>
+          <h2>{{ imagePost.title }}</h2>
+          <p>{{ imagePost.description }}</p>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script>
+      function s3UploadFile(preSignedURL, file) {
+        return axios.put(preSignedURL, file, { headers: {
+          'Content-Type': 'multipart/form-data',
+        } })
+      }
+      const app = new Vue({
+        el: '#app',
+        data: {
+          file: '',
+          title: '',
+          description: '',
+          imagePosts: [],
+        },
+        computed: {},
+        methods: {
+          upload() {
+            let url = null
+            axios.post(`/generatePresignedUrl`, {
+              filename: document.getElementById('f').files[0].name
+            })
+              .then(({ data }) => {
+                url = data.url
+                return s3UploadFile(data.presignedUrl, document.getElementById('f').files[0])
+              })
+              .then(({ data }) => {
+                return axios.post(`/images`, {
+                  title: this.title,
+                  description: this.description,
+                  url,
+                })
+              }).then(({ data }) => {
+                this.fetchImagePosts()
+              })
+              .catch((err) => {
+                console.log(document.getElementById('f').files[0])
+                console.log(err)
+              })
+          },
+          fetchImagePosts() {
+            axios.get(`/images`)
+              .then(({ data }) => {
+                this.imagePosts = data
+              })
+          }
+        },
+        mounted() {
+          this.fetchImagePosts()
+        }
+      })
+    </script>
+  </body>
+</html>
