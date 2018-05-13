@@ -247,7 +247,7 @@ app.post('/generatePresignedUrl', function (req, res) {
     }
     const presignedUrl = s3.getSignedUrl('putObject', params)
     res.json({
-        key,
+        url: key,
         presignedUrl,
     })
 })
