@@ -172,7 +172,7 @@ app.post('/generatePresignedUrl', function (req, res) {
     }
     const presignedUrl = s3.getSignedUrl('putObject', params)
     res.json({
-        url: key,
+        url: `https://s3-ap-southeast-1.amazonaws.com/${params.Bucket}/${key}`,
         presignedUrl,
     })
 })
